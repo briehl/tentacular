@@ -1,0 +1,72 @@
+{
+    "name": "tentacular",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/briehl/tentacular.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/briehl/tentacular/issues"
+    },
+    "homepage": "https://github.com/briehl/tentacular#readme",
+    "description": "",
+    "devDependencies": {
+        "@babel/core": "^7.0.0-beta.40",
+        "@babel/preset-env": "^7.0.0-beta.40",
+        "babel-loader": "^8.0.0-beta.0",
+        "webpack": "^3.11.0"
+    },
+    "dependencies": {
+        "d3": "^4.13.0"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "browser": true,
+            "amd": true,
+            "node": true
+        },
+        "parserOptions": {
+            "ecmaVersion": 6,
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true,
+                "impliedStrict": true
+            }
+        },
+        "rules": {
+            "semi": 2,
+            "indent": [
+                "error",
+                4
+            ],
+            "quotes": [
+                "error",
+                "single"
+            ],
+            "no-unused-vars": [
+                "warn",
+                {
+                    "args": "after-used"
+                }
+            ],
+            "no-console": [
+                "error",
+                {
+                    "allow": [
+                        "warn",
+                        "error"
+                    ]
+                }
+            ]
+        }
+    }
+}
