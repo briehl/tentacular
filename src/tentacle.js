@@ -6,6 +6,12 @@
 
 import * as d3 from 'd3';
 
-export function tentacle () {
-    console.warn('i am a tentacle.');
+export function tentacle (svg, width, height) {
+    svg.append('circle')
+        .attr('cx', width/2)
+        .attr('cy', height/2)
+        .attr('r', width/2 -2)
+        .style('fill', 'purple')
+        .style('stroke', 'black')
+        .style('stroke-width', '2');
 }

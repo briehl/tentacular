@@ -1,10 +1,17 @@
+import * as d3 from 'd3';
 import { tentacle } from './tentacle';
 
-function component () {
-    var element = document.createElement('div');
-    element.innerHTML = 'Hello webpack.';
-    return element;
+const width = 500;
+const height = 500;
+
+function main() {
+    var svgCanvas = document.createElement('div');
+    document.body.appendChild(svgCanvas);
+    var svg = d3.select(svgCanvas).append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+    tentacle(svg, width, height);
 }
 
-document.body.appendChild(component());
-tentacle();
+main();
