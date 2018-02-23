@@ -1,23 +1,20 @@
 {
     "name": "tentacular",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/briehl/tentacular.git"
-    },
+    "repository": "git+https://github.com/briehl/tentacular.git",
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "Bill Riehl <wjriehl@lbl.gov>",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/briehl/tentacular/issues"
     },
     "homepage": "https://github.com/briehl/tentacular#readme",
-    "description": "",
+    "description": "Tentacles made of bubbles in SVG.",
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.40",
         "@babel/preset-env": "^7.0.0-beta.40",
