@@ -12,8 +12,7 @@ Then, just:
 
 ```
 yarn install
-something-something-webpack
-yarn start-or-something
+yarn start
 ```
 
 Then point your browser at `http://localhost:3000` and look at pretty tentacles. When it's done, at least.
