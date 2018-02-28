@@ -3,15 +3,56 @@
  * A tentacle is roughly defined as starting with a thick circle, then circles with varying
  * radii, tangent to each other at some angle, until some minimum size is met.
  */
-
-import * as d3 from 'd3';
-
 export function tentacle (svg, width, height) {
+    let color = randomColor();
+    let initRadius = width/2 * (0.4 + Math.random()*0.2);
+    let direction = Math.random(2*Math.PI);
+    let [startX, startY] = [width*0.1, height*0.1];
+
+    extendTentacle(svg, startX, startY, initRadius, color, direction, width*0.01);
+}
+
+/**
+ * Add spot if radius > minRadius (else return)
+ * Decide next spot s.t. tangent to current spot, randomish angle.
+ */
+function extendTentacle(svg, centerX, centerY, radius, color, direction, minRadius) {
+    //let radius = width/2 * (0.8 + Math.random()*0.2);
+    if (radius < minRadius) {
+        return;
+    }
+    addSpot(svg, centerX, centerY, radius, color);
+    direction += (1 + delta(0.5));
+    let nextRadius = radius * (0.3 + Math.random()*0.1);
+    [centerX, centerY] = findCenter(centerX, centerY, radius + nextRadius, direction);
+    extendTentacle(svg, centerX, centerY, nextRadius, color, direction, minRadius);
+}
+
+function addSpot(svg, centerX, centerY, radius, color) {
     svg.append('circle')
-        .attr('cx', width/2)
-        .attr('cy', height/2)
-        .attr('r', width/2 -2)
-        .style('fill', 'purple')
+        .attr('cx', centerX)
+        .attr('cy', centerY)
+        .attr('r', radius)
+        .style('fill', color)
         .style('stroke', 'black')
         .style('stroke-width', '2');
+}
+
+function randomColor() {
+    let r = Math.ceil(Math.random()*255);
+    let g = Math.ceil(Math.random()*255);
+    let b = Math.ceil(Math.random()*255);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+/**
+ * Given the center of one spot, find the center of the next.
+ * This gets calculated by r*sin dir
+ */
+function findCenter(x, y, r, dir) {
+    return [x + r * Math.cos(dir), y + r * Math.sin(dir)];
+}
+
+function delta(range) {
+    return (Math.random()*range) - (range/2);
 }
