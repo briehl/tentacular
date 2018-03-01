@@ -11,7 +11,9 @@ function main() {
         .attr('width', width)
         .attr('height', height);
 
-    tentacle(svg, width, height);
+    for (var i=0; i<10; i++) {
+        tentacle(svg, width, height);
+    }
 }
 
 main();

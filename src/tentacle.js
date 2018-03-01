@@ -5,9 +5,9 @@
  */
 export function tentacle (svg, width, height) {
     let color = randomColor();
-    let initRadius = width/2 * (0.4 + Math.random()*0.2);
+    let initRadius = width/2 * (0.1 + Math.random()*0.2);
     let direction = Math.random(2*Math.PI);
-    let [startX, startY] = [width*0.1, height*0.1];
+    let [startX, startY] = findCenter(width/2, height/2, width/2, -direction);
 
     extendTentacle(svg, startX, startY, initRadius, color, direction, width*0.01);
 }
@@ -22,8 +22,8 @@ function extendTentacle(svg, centerX, centerY, radius, color, direction, minRadi
         return;
     }
     addSpot(svg, centerX, centerY, radius, color);
-    direction += (1 + delta(0.5));
-    let nextRadius = radius * (0.3 + Math.random()*0.1);
+    direction += (1 + delta(Math.PI/2));
+    let nextRadius = radius * (0.8 + Math.random()*0.1);
     [centerX, centerY] = findCenter(centerX, centerY, radius + nextRadius, direction);
     extendTentacle(svg, centerX, centerY, nextRadius, color, direction, minRadius);
 }
@@ -42,7 +42,7 @@ function randomColor() {
     let r = Math.ceil(Math.random()*255);
     let g = Math.ceil(Math.random()*255);
     let b = Math.ceil(Math.random()*255);
-    return 'rgb(' + r + ',' + g + ',' + b + ')';
+    return 'rgba(' + r + ',' + g + ',' + b + ', 0.5)';
 }
 
 /**
@@ -54,5 +54,13 @@ function findCenter(x, y, r, dir) {
 }
 
 function delta(range) {
-    return (Math.random()*range) - (range/2);
+    return (Math.random()*range) - (range);
+}
+
+/**
+ * Translate to an edge along the negative direction starting from the center.
+ */
+function findStartPoint(x, y, dir) {
+    dir = dir * -1;
+
 }
